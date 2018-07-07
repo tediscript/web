@@ -48,5 +48,17 @@ Command to update WebEngine with latest version
 web update
 ```
 
+Enable HTTPS using Let's Encrypt certificate
+
+```
+certbot --nginx
+```
+
+Automating Let's Encrypt certificate renewal
+
+```
+certbot renew --dry-run
+```
+
 ## License
 [MIT License](http://opensource.org/licenses/MIT)
