@@ -2,7 +2,7 @@
 
 function version()
 {
-    echo "Web v0.2.3"
+    echo "Web v0.2.4"
 }
 
 function update_script()
@@ -140,7 +140,8 @@ function site_delete()
     echo "delete database..."
     local name=${1//./_}
     . /etc/web/mysql.conf
-    mysql -u root -p${password} -e "DROP DATABASE IF EXISTS ${name}"
+    mysql -u root -p${password} -e "DROP DATABASE IF EXISTS ${name}; 
+    DROP USER '${name}'@'localhost';"
     echo "database deleted!"
 
     echo "${1} deleted!"
