@@ -1,5 +1,10 @@
 #!/bin/bash
 
+function version()
+{
+    echo "Web v0.1.1"
+}
+
 function update_script()
 {
     echo "updating web script..."
@@ -90,7 +95,7 @@ function site_create()
     #save username, password to config file
     site_create_mysql_conf ${1}
     #create mysql user and database
-    
+
     #create default index.php file
     site_create_root_directory ${1}
     #create site available
@@ -131,7 +136,9 @@ function site()
 
 ###========###MAIN###========###
 
-if [ ${1} == "update" ]; then
+if [ ${1} == "-v" ]; then
+    version
+elif [ ${1} == "update" ]; then
     update_script
 elif [ ${1} == "site" ]; then
     site ${2} ${3}
