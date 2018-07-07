@@ -2,7 +2,7 @@
 
 function version()
 {
-    echo "Web v0.2.1"
+    echo "Web v0.2.2"
 }
 
 function update_script()
