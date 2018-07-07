@@ -2,7 +2,7 @@
 
 function version()
 {
-    echo "Web v0.2.0"
+    echo "Web v0.2.1"
 }
 
 function update_script()
@@ -30,24 +30,37 @@ function site_disable()
     echo "${1} disabled!"
 }
 
-function site_create_mysql_conf()
+function site_create_database()
 {
+    local name=${1//\./_}
+    local pass=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+    
+    #create mysql user and database
     mkdir -p /var/www/${1}/conf
     echo "### MySQL Config ###
 database=${name}
 username=${name}
-password=${password}" > /var/www/${1}/conf/mysql.conf
+password=${pass}" > /var/www/${1}/conf/mysql.conf
+
+    #create database
+    . /etc/web/mysql.conf
+    mysql --user=root --password=${password} <<_EOF_
+    CREATE USER '${name}'@'localhost' IDENTIFIED WITH mysql_native_password AS '${pass}';
+    GRANT USAGE ON *.* TO '${name}'@'localhost' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+    CREATE DATABASE IF NOT EXISTS `${name}`;GRANT ALL PRIVILEGES ON `${name}`.* TO '${name}'@'localhost';
+    GRANT ALL PRIVILEGES ON `${name}\_%`.* TO '${name}'@'localhost';
+_EOF_
 }
 
-function site_create_root_directory()
+function site_create_web_directory()
 {
-    echo "create root directory for ${1}..."
+    echo "create web directory for ${1}..."
     mkdir -p /var/www/${1}/src/public
     echo "<h1>It works!</h1>" > /var/www/${1}/src/public/index.php
     echo "directory created!"
 }
 
-function site_create_sites_available()
+function site_create_nginx_conf()
 {
     echo "create nginx config for ${1}..."
     echo "### ${1} ###
@@ -92,19 +105,17 @@ function site_create()
 {
     #check is domain exist (and sites-available)
     echo "create ${1}..."
-    #create username and database: ${1} replace . to _
-    local name=${1//\./_}
-    #cerate password
-    local password=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-    #save username, password to config file
-    site_create_mysql_conf ${1}
-    #create mysql user and database
 
-    #create default index.php file
-    site_create_root_directory ${1}
-    #create site available
-    site_create_sites_available ${1}
-    #site enable
+    #create web root and default index.php file
+    site_create_web_directory ${1}
+
+    #create database
+    site_create_database ${1}
+
+    #create nginx configuration
+    site_create_nginx_conf ${1}
+
+    #enable site
     site_enable ${1}
     echo "${1} created!"
 }
@@ -112,13 +123,27 @@ function site_create()
 function site_delete()
 {
     echo "delete ${1}..."
+    
     #delete site enable
     site_disable ${1}
+    
     #site available
+    echo "delete nginx conf..."
     rm /etc/nginx/sites-available/${1}
+    echo "nginx conf deleted!"
+
     #delete folder /var/www/${1}
+    echo "delete web root directory..."
     rm -Rf /var/www/${1}
+    echo "web root directory deleted!"
+
     #delete database
+    echo "delete database..."
+    local name=${1//./_}
+    . /etc/web/mysql.conf
+    mysql -u root -p${password} -e "DROP DATABASE IF EXISTS ${name}"
+    echo "database deleted!"
+
     echo "${1} deleted!"
 }
 
