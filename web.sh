@@ -10,38 +10,43 @@ function update_script()
 
 function site_create()
 {
-    echo "site create ${1}"
+    echo "create ${1}..."
     #create folder /var/www/${1}/public/
     #create database ${1} replace . to _ for username and database
     #create site available, site enable
+    echo "${1} created!"
 }
 
 function site_delete()
 {
-    echo "site delete ${1}"
+    echo "delete ${1}..."
     #delete site enable, site available
     #delete folder /var/www/${1}
     #delete database
+    echo "${1} deleted!"
 }
 
 function site_enable()
 {
-    echo "site enable ${1}"
+    echo "enable ${1}..."
     #link sites-available to sites-enabled
     ln -s /etc/nginx/sites-available/${1} /etc/nginx/sites-enabled/${1}
     service nginx reload
+    echo "${1} enabled!"
 }
 
 function site_disable()
 {
-    echo "site disable ${1}"
+    echo "disable ${1}..."
     #rm link in sites-enabled
     rm /etc/nginx/sites-enabled/${1}
     service nginx reload
+    echo "${1} disabled!"
 }
 
 function site()
 {
+    #validate domain ${2}
     if [ ${1} == "create" ]; then
         site_create ${2}
     elif [ ${1} == "delete" ]; then
