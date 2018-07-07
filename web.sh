@@ -46,7 +46,6 @@ function site_create_root_directory()
 
 function site_create_sites_available()
 {
-    local domain=${1}
     echo "### ${1} ###
 server {
     listen 80;
