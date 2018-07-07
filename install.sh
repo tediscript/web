@@ -32,7 +32,8 @@ function save_config()
 
 function install_script()
 {
-    echo 'download script...'
+    wget -qO /usr/local/bin/web https://raw.githubusercontent.com/tediscript/web/master/web.sh
+    chmod +x /usr/local/bin/web
 }
 
 function install_stack()
