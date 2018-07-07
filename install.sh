@@ -41,15 +41,19 @@ function install_stack()
     sudo apt update -y
     sudo apt upgrade -y
 
+    #nginx
     sudo apt install nginx -y
     systemctl start nginx
     systemctl enable nginx
 
+    #php
     sudo apt install php7.2 php7.2-curl php7.2-common php7.2-cli php7.2-mysql php7.2-mbstring php7.2-fpm php7.2-xml php7.2-zip -y
     sudo sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.2/fpm/php.ini
     systemctl start php7.2-fpm
     systemctl enable php7.2-fpm
+    apt install composer -y
 
+    #mysql
     sudo apt install mariadb-server mariadb-client -y
     systemctl start mysql
     systemctl enable mysql
@@ -62,7 +66,12 @@ function install_stack()
       FLUSH PRIVILEGES;
 _EOF_
 
-    apt install composer -y
+    #certbot
+    apt update
+    apt install software-properties-common -y
+    add-apt-repository ppa:certbot/certbot
+    apt update
+    apt install python-certbot-nginx -y
     
     apt autoremove -y
 }
