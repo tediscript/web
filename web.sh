@@ -2,7 +2,7 @@
 
 function version()
 {
-    echo "Web v0.2.2"
+    echo "Web v0.2.3"
 }
 
 function update_script()
@@ -44,13 +44,11 @@ password=${pass}" > /var/www/${1}/conf/mysql.conf
 
     #create database
     . /etc/web/mysql.conf
-    mysql --user=root --password=${password} <<_EOF_
-    CREATE USER '${name}'@'localhost' IDENTIFIED BY '${pass}';
+    mysql --user=root --password=${password} -e "CREATE USER '${name}'@'localhost' IDENTIFIED BY '${pass}';
     GRANT USAGE ON *.* TO '${name}'@'localhost' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
     CREATE DATABASE IF NOT EXISTS `${name}`;
     GRANT ALL PRIVILEGES ON `${name}`.* TO '${name}'@'localhost';
-    FLUSH PRIVILEGES;
-_EOF_
+    FLUSH PRIVILEGES;"
 }
 
 function site_create_web_directory()
