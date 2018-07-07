@@ -3,7 +3,8 @@
 function update_script()
 {
     echo "update script..."
-    # download to /usr/local/bin/web, chmod +x
+    wget -O /usr/local/bin/web https://raw.githubusercontent.com/tediscript/web/master/web.sh
+    chmod +x /usr/local/bin/web
 }
 
 function site_create()
