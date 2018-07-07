@@ -3,7 +3,7 @@
 function update_script()
 {
     echo "update script..."
-    wget -O /usr/local/bin/web https://raw.githubusercontent.com/tediscript/web/master/web.sh
+    wget -qO /usr/local/bin/web https://raw.githubusercontent.com/tediscript/web/master/web.sh
     chmod +x /usr/local/bin/web
 }
 
