@@ -2,9 +2,10 @@
 
 function update_script()
 {
-    echo "update script..."
+    echo "updating web script..."
     wget -qO /usr/local/bin/web https://raw.githubusercontent.com/tediscript/web/master/web.sh
     chmod +x /usr/local/bin/web
+    echo "web script updated!"
 }
 
 function site_create()
