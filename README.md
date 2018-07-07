@@ -42,8 +42,11 @@ Enable web
 web site enable example.com
 ```
 
-Command to Update WebEngine with latest version
+Command to update WebEngine with latest version
 
 ```
 web update
 ```
+
+## License
+[MIT License](http://opensource.org/licenses/MIT)
