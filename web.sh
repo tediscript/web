@@ -2,7 +2,7 @@
 
 function version()
 {
-    echo "Web v0.2.5"
+    echo "Web v0.3.0"
 }
 
 function update_script()
@@ -55,6 +55,7 @@ function site_create_web_directory()
     echo "create web directory for ${1}..."
     mkdir -p /var/www/${1}/src/public
     echo "<h1>It works!</h1>" > /var/www/${1}/src/public/index.php
+    chown -Rf www-data:www-data /var/www/${1}/src
     echo "directory created!"
 }
 
