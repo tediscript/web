@@ -11,6 +11,7 @@ function update_script()
     wget -qO /usr/local/bin/web https://raw.githubusercontent.com/tediscript/web/master/web.sh
     chmod +x /usr/local/bin/web
     echo "web script updated!"
+    web -v
 }
 
 function site_enable()
