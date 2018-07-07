@@ -2,7 +2,7 @@
 
 function version()
 {
-    echo "Web v0.1.2"
+    echo "Web v0.2.0"
 }
 
 function update_script()
@@ -41,12 +41,15 @@ password=${password}" > /var/www/${1}/conf/mysql.conf
 
 function site_create_root_directory()
 {
+    echo "create root directory for ${1}..."
     mkdir -p /var/www/${1}/src/public
     echo "<h1>It works!</h1>" > /var/www/${1}/src/public/index.php
+    echo "directory created!"
 }
 
 function site_create_sites_available()
 {
+    echo "create nginx config for ${1}..."
     echo "### ${1} ###
 server {
     listen 80;
@@ -82,6 +85,7 @@ server {
     error_log /var/log/nginx/${1}-error.log;
 }
 " > /etc/nginx/sites-available/${1}
+    echo "nginx config created!"
 }
 
 function site_create()
