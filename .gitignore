@@ -1,9 +1,5 @@
 .DS_Store
 draft.txt
-sinyal.co
-nginx-sinyal.co
 test.sh
-mysql.conf
 nginx.conf
-nginx-wedd.conf
 version.sh
