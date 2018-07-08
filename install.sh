@@ -73,7 +73,8 @@ _EOF_
     apt update
     apt install python-certbot-nginx -y
     
-    apt autoremove -y
+    #utilities
+    apt install zip unzip -y
 }
 
 ##============##MAIN##============##
@@ -84,4 +85,4 @@ save_config
 install_script
 install_stack
 
-echo "Done!"
+echo "Stack installation done!"
