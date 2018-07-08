@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "##################################"
+echo "###      WebEngine v0.3.0      ###"
+echo "##################################"
+
 function is_valid_email() {
       regex="^([A-Za-z]+[A-Za-z0-9]*((\.|\-|\_)?[A-Za-z]+[A-Za-z0-9]*){1,})@(([A-Za-z]+[A-Za-z0-9]*)+((\.|\-|\_)?([A-Za-z]+[A-Za-z0-9]*)+){1,})+\.([A-Za-z]{2,})+"
       [[ "${1}" =~ $regex ]]
@@ -78,9 +82,7 @@ _EOF_
 }
 
 ##============##MAIN##============##
-echo "###################################"
-echo "### LEMP Stack for Ubuntu 18.04 ###"
-echo "###################################"
+
 save_config
 install_script
 install_stack
