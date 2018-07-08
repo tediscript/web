@@ -1,6 +1,10 @@
 # WebEngine
 Command-line control panel for Ubuntu 18.04 to manage web sites running on Nginx, PHP, MySQL, and Let's Encrypt. Inspired by EasyEngine.
 
+## Version
+
+WebEngine v0.3.1
+
 ## Installation
 
 We have created an installer script which will install all the dependencies for you. We have tested this on Ubuntu 18.04.
@@ -42,7 +46,7 @@ Enable web
 web site enable example.com
 ```
 
-Command to update WebEngine with latest version
+Command to update WebEngine to latest version
 
 ```
 web update
