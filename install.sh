@@ -47,6 +47,8 @@ function install_stack()
 
     #nginx
     sudo apt install nginx -y
+    cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.save
+    wget -qO /etc/nginx/nginx.conf https://raw.githubusercontent.com/tediscript/web/master/nginx.conf
     systemctl start nginx
     systemctl enable nginx
 
