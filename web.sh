@@ -65,7 +65,6 @@ function site_create_nginx_conf()
     echo "### ${1} ###
 server {
     listen 80;
-    listen [::]:80 ipv6only=on;
 
     if (\$host = www.${1}) {
         return 301 \$scheme://${1}\$request_uri;
