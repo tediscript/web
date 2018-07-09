@@ -152,7 +152,7 @@ function site_list()
     echo "all sites:"
     ls /etc/nginx/sites-available | egrep -v '*\.save'
     echo "active sites:"
-    ls /etc/nginx/sites-enabled
+    ls /etc/nginx/sites-enabled | cat
 }
 
 function site()
