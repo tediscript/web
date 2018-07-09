@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "##################################"
-echo "###      WebEngine v0.4.1      ###"
+echo "###      WebEngine v0.5.0      ###"
 echo "##################################"
 
 function is_valid_email() {
