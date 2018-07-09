@@ -147,6 +147,14 @@ function site_delete()
     echo "${1} deleted!"
 }
 
+function site_list()
+{
+    echo "all sites:"
+    ls /etc/nginx/sites-available | egrep -v '*\.save'
+    echo "active sites:"
+    ls /etc/nginx/sites-enabled
+}
+
 function site()
 {
     #TODO: validate domain ${2}
@@ -158,6 +166,8 @@ function site()
         site_enable ${2}
     elif [ ${1} == "disable" ]; then
         site_disable ${2}
+    elif [ ${1} == "list" ]; then
+        site_list
     else
         echo "command not supported"
     fi
