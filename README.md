@@ -46,6 +46,12 @@ Enable web
 web site enable example.com
 ```
 
+List all web
+
+```
+web site list
+```
+
 Command to update WebEngine to latest version
 
 ```
