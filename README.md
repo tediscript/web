@@ -13,13 +13,6 @@ We have created an installer script which will install all the dependencies for 
 wget -qO web bit.ly/web-script && sudo bash web
 ```
 
-Even if the script doesn't work for your distribution, you can manually install the dependencies and then run the following commands to install WebEngine
-
-```bash
-wget -O /usr/local/bin/web https://raw.githubusercontent.com/tediscript/web/master/install.sh
-chmod +x /usr/local/bin/web
-```
-
 ## Usage
 
 To get started with WebEngine and create a PHP site, run
