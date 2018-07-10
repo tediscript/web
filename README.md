@@ -3,7 +3,7 @@ Command-line control panel for Ubuntu 18.04 to manage web sites running on Nginx
 
 ## Version
 
-WebEngine v0.5.1
+WebEngine v0.5.2
 
 ## Installation
 
