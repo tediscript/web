@@ -32,7 +32,7 @@ function site_disable()
 
 function site_create_database()
 {
-    local name=${1//\./_}
+    local name=${1//[^a-z0-9]/_}
     local pass=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
     
     #create mysql user and database
@@ -137,7 +137,7 @@ function site_delete()
 
     #delete database
     echo "delete database..."
-    local name=${1//./_}
+    local name=${1//[^a-z0-9]/_}
     . /etc/web/mysql.conf
     mysql -u root -p${password} -e "DROP DATABASE IF EXISTS ${name}; 
     DROP USER '${name}'@'localhost';"
