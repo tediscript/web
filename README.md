@@ -63,5 +63,27 @@ Automating Let's Encrypt certificate renewal
 certbot renew --dry-run
 ```
 
+
+## Folder Structure
+
+```
+/etc/web/
+    mysql.conf
+    app.conf
+/var/www/domain.com/
+    conf/
+        mysql.conf
+    src/
+    public/
+        index.php
+```
+
+- MySQL root password stored in `/etc/web/mysql.conf`
+- Default app username and email stored in `/etc/web/app.conf`
+- MySQL user password for each domain stored in `/var/www/domain.tld/conf/mysql.conf`
+- App folder is `/var/www/domain.tld/src/`
+- Web root or public folder is `/var/www/domain.tld/src/public/`
+
+
 ## License
 [MIT License](http://opensource.org/licenses/MIT)
