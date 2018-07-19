@@ -87,3 +87,16 @@ certbot renew --dry-run
 
 ## License
 [MIT License](http://opensource.org/licenses/MIT)
+
+### Quick Summary by [tl;drLegal](https://tldrlegal.com/license/mit-license)
+A short, permissive software license. Basically, you can do whatever you want as long as you include the original copyright and license notice in any copy of the software/source.  There are many variations of this license in use.
+
+| Can | Cannot | Must |
+| --- | ------ | ---- |
+| Commercial Use | Hold Liable | Include Copyright |
+| Modify |  | Include License |
+| Distribute |  |
+| Sublicense |  |
+| Private Use |  |
+
+
