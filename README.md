@@ -1,9 +1,11 @@
 # WebEngine
 Command-line control panel for Ubuntu 18.04 to manage web sites running on Nginx, PHP, MySQL, and Let's Encrypt. Inspired by EasyEngine.
 
+
 ## Version
 
 WebEngine v0.5.2
+
 
 ## Installation
 
@@ -12,6 +14,7 @@ We have created an installer script which will install all the dependencies for 
 ```bash
 wget -qO web bit.ly/web-script && sudo bash web
 ```
+
 
 ## Usage
 
@@ -83,6 +86,27 @@ certbot renew --dry-run
 - MySQL user password for each domain stored in `/var/www/domain.tld/conf/mysql.conf`
 - App folder is `/var/www/domain.tld/src/`
 - Web root or public folder is `/var/www/domain.tld/src/public/`
+
+
+## App Installed
+
+- nginx
+- php7.2 
+- php7.2-curl 
+- php7.2-common 
+- php7.2-cli 
+- php7.2-mysql 
+- php7.2-mbstring 
+- php7.2-fpm 
+- php7.2-xml 
+- php7.2-zip
+- composer
+- mariadb-server 
+- mariadb-client
+- software-properties-common
+- python-certbot-nginx
+- zip
+- unzip
 
 
 ## License
