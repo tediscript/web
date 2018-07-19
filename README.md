@@ -109,6 +109,12 @@ certbot renew --dry-run
 - unzip
 
 
+## Reference
+
+- [EasyEngine - WordPress On Nginx Made Easy!](https://easyengine.io/)
+- [How to Install Laravel 5.6 PHP Framework with Nginx on Ubuntu 18.04](https://www.howtoforge.com/tutorial/ubuntu-laravel-php-nginx/)
+
+
 ## License
 [MIT License](http://opensource.org/licenses/MIT)
 
