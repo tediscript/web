@@ -64,7 +64,7 @@ certbot renew --dry-run
 ```
 
 
-## Folder Structure
+## Folder Structure And Configuration
 
 ```
 /etc/web/
