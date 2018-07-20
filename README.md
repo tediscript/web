@@ -110,7 +110,7 @@ certbot renew --dry-run
 
 
 ## Roadmap
-- `web site info example.com` For web information
+- `web site info example.com` command for web information
 - Install in existing server (installed MySQL, nginx and PHP)
 
 ## Reference
