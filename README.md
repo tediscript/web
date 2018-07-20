@@ -111,7 +111,11 @@ certbot renew --dry-run
 
 ## Roadmap
 - `web site info example.com` command for web information
+- `web site create example.com --laravel` command to create Laravel site
+- `web site create example.com --wp` command to create WordPress site
 - Install in existing server (installed MySQL, nginx and PHP)
+- WebApi to manage WebEngine from API
+- WebAdmin to manage WebEngine from web interface
 
 ## Reference
 
