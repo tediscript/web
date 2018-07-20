@@ -9,7 +9,7 @@ WebEngine v0.5.2
 
 ## Installation
 
-We have created an installer script which will install all the dependencies for you. We have tested this on Ubuntu 18.04.
+We have created an installer script which will install all the dependencies for you. We have tested this on Ubuntu 18.04. Only support for fresh installed Ubuntu.
 
 ```bash
 wget -qO web bit.ly/web-script && sudo bash web
@@ -83,9 +83,9 @@ certbot renew --dry-run
 
 - MySQL root password stored in `/etc/web/mysql.conf`
 - Default app username and email stored in `/etc/web/app.conf`
-- MySQL user password for each domain stored in `/var/www/domain.tld/conf/mysql.conf`
-- App folder is `/var/www/domain.tld/src/`
-- Web root or public folder is `/var/www/domain.tld/src/public/`
+- MySQL user password for each domain stored in `/var/www/example.com/conf/mysql.conf`
+- App folder is `/var/www/example.com/src/`
+- Web root or public folder is `/var/www/example.com/src/public/`
 
 
 ## App Installed
@@ -108,6 +108,10 @@ certbot renew --dry-run
 - zip
 - unzip
 
+
+## Roadmap
+- `web site info example.com` For web information
+- Install in existing server (installed MySQL, nginx and PHP)
 
 ## Reference
 
