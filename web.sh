@@ -7,8 +7,15 @@ function version()
 
 function update_script()
 {
-    echo "updating web script..."
-    wget -qO /usr/local/bin/web https://raw.githubusercontent.com/tediscript/web/master/web.sh
+    if [ $# -eq 0 ]; then
+        echo "updating from master..."
+        wget -qO /usr/local/bin/web https://raw.githubusercontent.com/tediscript/web/master/web.sh
+    elif [ ${1} == "--dev" ]; then
+        echo "updating from dev..."
+        wget -qO /usr/local/bin/web https://raw.githubusercontent.com/tediscript/web/dev/web.sh
+    else
+        version
+    fi
     chmod +x /usr/local/bin/web
     echo "web script updated!"
     web -v
@@ -177,7 +184,7 @@ function site()
 if [ ${1} == "-v" ]; then
     version
 elif [ ${1} == "update" ]; then
-    update_script
+    update_script ${2}
 elif [ ${1} == "site" ]; then
     site ${2} ${3}
 else
