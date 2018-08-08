@@ -100,6 +100,7 @@ certbot renew --dry-run
 - php7.2-fpm 
 - php7.2-xml 
 - php7.2-zip
+- php7.2-sqlite3
 - composer
 - mariadb-server 
 - mariadb-client
