@@ -2,7 +2,7 @@
 
 function version()
 {
-    echo "WebEngine v0.6.0-dev"
+    echo "WebEngine "
 }
 
 function update_script()
