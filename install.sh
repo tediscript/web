@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "##################################"
-echo "###      WebEngine v0.6.0      ###"
+echo "###         WebEngine          ###"
 echo "##################################"
 
 function is_valid_email() {
@@ -9,24 +9,9 @@ function is_valid_email() {
       [[ "${1}" =~ $regex ]]
 }
 
-function save_config()
+function setup_config()
 {
     mkdir -p /etc/web
-
-    echo "Admin user:"
-    read user
-
-    echo "Admin email:"
-    read email
-    while !(is_valid_email ${email}) ; do
-        echo "Invalid email. Pleas try again"
-        echo "Admin email:"
-        read email
-    done
-
-    app_config=/etc/web/app.conf
-    echo "user=${user}" > ${app_config}
-    echo "email=${email}" >> ${app_config}
 
     mysql_config=/etc/web/mysql.conf
     password=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
@@ -43,7 +28,7 @@ function install_script()
 function install_stack()
 {
     sudo apt update -y
-    sudo apt upgrade -y
+    #sudo apt upgrade -y
 
     #nginx
     sudo apt install nginx -y
@@ -87,7 +72,7 @@ _EOF_
 
 ##============##MAIN##============##
 
-save_config
+setup_config
 install_script
 install_stack
 
