@@ -67,7 +67,7 @@ _EOF_
     #utilities
     apt install zip unzip -y
 
-    apt autoremove
+    apt autoremove -y
 }
 
 ##============##MAIN##============##
