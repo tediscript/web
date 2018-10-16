@@ -60,7 +60,7 @@ _EOF_
     #certbot
     apt update
     apt install software-properties-common -y
-    add-apt-repository ppa:certbot/certbot
+    add-apt-repository ppa:certbot/certbot -y
     apt update
     apt install python-certbot-nginx -y
     
