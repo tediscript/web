@@ -38,7 +38,7 @@ function install_stack()
     systemctl enable nginx
 
     #php
-    sudo apt install php7.4 php7.4-curl php7.4-common php7.4-cli php7.4-mysql php7.4-mbstring php7.4-fpm php7.4-xml php7.4-zip php7.4-sqlite3 -y
+    sudo apt install php7.4 php7.4-cli php7.4-common php7.4-curl php7.4-dev php7.4-fpm php7.4-gd php7.4-imagick php7.4-imap php7.4-intl php7.4-mbstring php7.4-mysql php7.4-opcache php7.4-soap php7.4-sqlite3 php7.4-xml php7.4-xmlrpc php7.4-zip -y
     sudo sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.4/fpm/php.ini
     systemctl start php7.4-fpm
     systemctl enable php7.4-fpm
@@ -58,11 +58,11 @@ function install_stack()
 _EOF_
 
     #certbot
-    apt update
-    apt install software-properties-common -y
-    add-apt-repository ppa:certbot/certbot -y
-    apt update
-    apt install python-certbot-nginx -y
+    sudo apt-get update
+    sudo apt-get install software-properties-common -y
+    sudo add-apt-repository universe -y
+    sudo apt-get update
+    apt install python3-certbot-nginx -y
     
     #utilities
     apt install zip unzip -y
