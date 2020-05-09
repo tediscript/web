@@ -28,7 +28,7 @@ function install_script()
 function install_stack()
 {
     sudo apt update -y
-    #sudo apt upgrade -y
+    sudo apt upgrade -y
 
     #nginx
     sudo apt install nginx -y
@@ -38,10 +38,10 @@ function install_stack()
     systemctl enable nginx
 
     #php
-    sudo apt install php7.2 php7.2-curl php7.2-common php7.2-cli php7.2-mysql php7.2-mbstring php7.2-fpm php7.2-xml php7.2-zip php7.2-sqlite3 -y
-    sudo sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.2/fpm/php.ini
-    systemctl start php7.2-fpm
-    systemctl enable php7.2-fpm
+    sudo apt install php7.4 php7.4-curl php7.4-common php7.4-cli php7.4-mysql php7.4-mbstring php7.4-fpm php7.4-xml php7.4-zip php7.4-sqlite3 -y
+    sudo sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.4/fpm/php.ini
+    systemctl start php7.4-fpm
+    systemctl enable php7.4-fpm
     apt install composer -y
 
     #mysql
