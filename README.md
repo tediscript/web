@@ -72,13 +72,15 @@ certbot renew --dry-run
 ```
 /etc/web/
     mysql.conf
-    app.conf
 /var/www/domain.com/
     conf/
         mysql.conf
+    log/
+    	access.log
+    	error.log
     src/
-    public/
-        index.php
+    	public/
+        	index.php
 ```
 
 - MySQL root password stored in `/etc/web/mysql.conf`
