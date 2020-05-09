@@ -83,7 +83,7 @@ server {
     index index.php index.html index.htm;
 
     # Your Domain Name
-    server_name ${1}; www.${1}
+    server_name ${1} www.${1};
 
     location / {
         try_files \$uri \$uri/ /index.php?\$query_string;
