@@ -2,7 +2,7 @@
 
 function version()
 {
-    echo "WebEngine v0.6.0"
+    echo "WebEngine v1.0.0"
 }
 
 function update_script()
@@ -43,7 +43,6 @@ function site_create_database()
     local pass=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
     
     #create mysql user and database
-    mkdir -p /var/www/${1}/conf
     echo "### MySQL Config ###
 database=${name}
 username=${name}
@@ -60,9 +59,11 @@ password=${pass}" > /var/www/${1}/conf/mysql.conf
 function site_create_web_directory()
 {
     echo "create web directory for ${1}..."
+    mkdir -p /var/www/${1}/conf
+    mkdir -p /var/www/${1}/log
     mkdir -p /var/www/${1}/src/public
     echo "<h1>It works!</h1>" > /var/www/${1}/src/public/index.php
-    chown -Rf www-data:www-data /var/www/${1}/src
+    chown -Rf www-data:www-data /var/www/${1}
     echo "directory created!"
 }
 
@@ -82,7 +83,7 @@ server {
     index index.php index.html index.htm;
 
     # Your Domain Name
-    server_name www.${1} ${1};
+    server_name ${1}; www.${1}
 
     location / {
         try_files \$uri \$uri/ /index.php?\$query_string;
@@ -92,15 +93,15 @@ server {
     location ~ \.php$ {
         try_files \$uri =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
         include fastcgi_params;
     }
 
     # Log files for Debugging
-    access_log /var/log/nginx/${1}-access.log;
-    error_log /var/log/nginx/${1}-error.log;
+    access_log /var/www/${1}/log/ccess.log;
+    error_log /var/www/${1}/log/error.log;
 }
 " > /etc/nginx/sites-available/${1}
     echo "nginx config created!"
